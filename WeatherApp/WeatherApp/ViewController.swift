@@ -9,7 +9,7 @@ import UIKit
 
 let corPrimaria = "AppPrimaryColor"
 let corContraste = "constrastColor"
-let cinzaSuava = "softGray"
+let cinzaSuave = "softGray"
 
 
 
@@ -107,7 +107,13 @@ class ViewController: UIViewController {
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.spacing = 3
-        
+        stackView.backgroundColor = UIColor(named: cinzaSuave)
+        stackView.layer.cornerRadius = 10
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 12,
+                                                                     leading: 24,
+                                                                     bottom: 12,
+                                                                     trailing: 24)
         return stackView
     }()
     
@@ -123,28 +129,10 @@ class ViewController: UIViewController {
         
     }()
     
-   
-    
     override func viewDidLoad() { // executado sempre que a viewC é carregada
         super.viewDidLoad()
         setupView()
       
-    }
-
-    override func viewDidAppear(_ animated: Bool) { // excutado sempre a viewC aparece
-        super.viewDidAppear(animated)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
     }
     
     private func setupView(){
