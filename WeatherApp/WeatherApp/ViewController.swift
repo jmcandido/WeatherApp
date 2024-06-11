@@ -32,27 +32,23 @@ class ViewController: UIViewController {
     
     
     private lazy var cityLabel: UILabel = {
-        let label = UILabel()
-        
-        configuraLabel(label: label,
+        let label = createLabel(
                        tamanhoFonte: 20,
                        cor: corPrimaria,
                        texto: "Várzea Alegre",
                        alinhamento: .center)
-        return label
         
+            return label
     }()
     
     private lazy var temperatureLabel: UILabel = {
-        let label = UILabel()
-        
-        configuraLabel(label: label,
+        let label = createLabel(
                        tamanhoFonte: 70,
                        cor: corPrimaria,
                        texto: "25ºC",
                        alinhamento: .left)
-        
-        return label;
+            return label
+
     }()
     
     private lazy var weatherIcon:UIImageView = {
@@ -66,12 +62,16 @@ class ViewController: UIViewController {
         
     }()
     
-    func configuraLabel(label: UILabel, tamanhoFonte: CGFloat, cor: String, texto: String, alinhamento: NSTextAlignment){
+    func createLabel(tamanhoFonte: CGFloat, cor: String, texto: String, alinhamento: NSTextAlignment) -> UILabel{
+        
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: tamanhoFonte)
         label.text = texto
         label.textColor = UIColor(named: cor)
         label.textAlignment = alinhamento
+        
+        return label
     }
     
     override func viewDidLoad() { // executado sempre que a viewC é carregada
