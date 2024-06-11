@@ -7,6 +7,8 @@
 
 import UIKit
 
+let corPrimaria = "PrimaryColor"
+
 class ViewController: UIViewController {
     
     private  lazy var backgroundView: UIImageView = {
@@ -31,22 +33,24 @@ class ViewController: UIViewController {
     
     private lazy var cityLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.text = "Várzea Alegre"
-        label.textAlignment = .center
-        label.textColor = UIColor(named: "PrimaryColor")
+        
+        configuraLabel(label: label,
+                       tamanhoFonte: 20,
+                       cor: corPrimaria,
+                       texto: "Várzea Alegre",
+                       alinhamento: .center)
         return label
         
     }()
     
     private lazy var temperatureLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 70, weight: .bold)
-        label.text = "25ºC"
-        label.textAlignment = .left
-        label.textColor = UIColor(named: "PrimaryColor")
+        
+        configuraLabel(label: label,
+                       tamanhoFonte: 70,
+                       cor: corPrimaria,
+                       texto: "25ºC",
+                       alinhamento: .left)
         
         return label;
     }()
@@ -61,6 +65,14 @@ class ViewController: UIViewController {
         
         
     }()
+    
+    func configuraLabel(label: UILabel, tamanhoFonte: CGFloat, cor: String, texto: String, alinhamento: NSTextAlignment){
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: tamanhoFonte)
+        label.text = texto
+        label.textColor = UIColor(named: cor)
+        label.textAlignment = alinhamento
+    }
     
     override func viewDidLoad() { // executado sempre que a viewC é carregada
         super.viewDidLoad()
