@@ -11,8 +11,6 @@ let corPrimaria = "AppPrimaryColor"
 let corContraste = "constrastColor"
 let cinzaSuave = "softGray"
 
-
-
 func createLabel(tamanhoFonte: CGFloat, weight: UIFont.Weight = .regular, cor: String, texto: String, alinhamento: NSTextAlignment? = nil) -> UILabel{
     
     let label = UILabel()
@@ -23,6 +21,14 @@ func createLabel(tamanhoFonte: CGFloat, weight: UIFont.Weight = .regular, cor: S
     label.textAlignment = alinhamento ?? .left
     
     return label
+}
+
+func createStackView (arrangedSubviews:[UIView], eixo: NSLayoutConstraint.Axis) -> UIStackView{
+    let stackview = UIStackView(arrangedSubviews: arrangedSubviews)
+    stackview.translatesAutoresizingMaskIntoConstraints = false
+    stackview.axis = eixo
+    
+    return stackview
 }
 
 class ViewController: UIViewController {
@@ -85,27 +91,19 @@ class ViewController: UIViewController {
     }()
     
     private lazy var humidityStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [humidityLabel, humidityValueLabel])
-        
-        stackView.axis = .horizontal
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        let stackView = createStackView(arrangedSubviews: [humidityLabel, humidityValueLabel], eixo: .horizontal)
         return stackView
     }()
     
     private lazy var windStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [windLabel, windValueLabel])
-        
-        stackView.axis = .horizontal
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        let stackView = createStackView(arrangedSubviews: [windLabel, windValueLabel], eixo: .horizontal)
         return stackView
     }()
     
     
     private lazy var statsStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [humidityStackView, windStackView])
+        let stackView = createStackView(arrangedSubviews: [humidityStackView, windStackView], eixo: .vertical)
         
-        stackView.axis = .vertical
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.spacing = 3
         stackView.backgroundColor = UIColor(named: cinzaSuave)
         stackView.layer.cornerRadius = 10
@@ -129,6 +127,25 @@ class ViewController: UIViewController {
         
     }()
     
+    private lazy var hourlyForecastLabel: UILabel = {
+        let label = createLabel(tamanhoFonte: 12,weight: .semibold, cor: corContraste, texto: "PREVISÃO POR HORA", alinhamento: .center)
+        return label
+    }()
+    
+    private lazy var hourlyCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 67, height: 84)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .red
+        
+        return collectionView
+    }()
+    
     override func viewDidLoad() { // executado sempre que a viewC é carregada
         super.viewDidLoad()
         setupView()
@@ -145,7 +162,8 @@ class ViewController: UIViewController {
         view.addSubview(backgroundView)
         view.addSubview(headerView)
         view.addSubview(statsStackView)
-        
+        view.addSubview(hourlyForecastLabel)
+        view.addSubview(hourlyCollectionView)
         
         headerView.addSubview(cityLabel)
         headerView.addSubview(temperatureLabel)
@@ -153,49 +171,47 @@ class ViewController: UIViewController {
         
     }
     
-    private func setConstraints (){
-        NSLayoutConstraint.activate([
-            backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
-            backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
-            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 35),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35),
-            headerView.heightAnchor.constraint(equalToConstant: 169)
-        ])
-        
-        NSLayoutConstraint.activate([
-            cityLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 15),
-            cityLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 15),
-            cityLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -15),
-            cityLabel.heightAnchor.constraint(equalToConstant: 20)
-        ])
-        
-        NSLayoutConstraint.activate([
-            temperatureLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: 21),
-            temperatureLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 26)
-        
-        ])
-        
-        NSLayoutConstraint.activate([
-            weatherIcon.heightAnchor.constraint(equalToConstant: 86),
-            weatherIcon.widthAnchor.constraint(equalToConstant: 86),
-            weatherIcon.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -26),
-            weatherIcon.centerYAnchor.constraint(equalTo: temperatureLabel.centerYAnchor),
-            weatherIcon.leadingAnchor.constraint(equalTo: temperatureLabel.trailingAnchor, constant: 15)
-        ])
-        
-        NSLayoutConstraint.activate([
-            statsStackView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 24),
-            statsStackView.widthAnchor.constraint(equalToConstant: 206),
-            statsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-        ])
-    }
+    private func setConstraints() {
+            NSLayoutConstraint.activate([
+                backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
+                backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+                
+                headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
+                headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 35),
+                headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35),
+                headerView.heightAnchor.constraint(equalToConstant: 169),
+                
+                cityLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 15),
+                cityLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 15),
+                cityLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -15),
+                cityLabel.heightAnchor.constraint(equalToConstant: 20),
+                
+                temperatureLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: 21),
+                temperatureLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 26),
+                
+                weatherIcon.heightAnchor.constraint(equalToConstant: 86),
+                weatherIcon.widthAnchor.constraint(equalToConstant: 86),
+                weatherIcon.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -26),
+                weatherIcon.centerYAnchor.constraint(equalTo: temperatureLabel.centerYAnchor),
+                weatherIcon.leadingAnchor.constraint(equalTo: temperatureLabel.trailingAnchor, constant: 15),
+                
+                statsStackView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 24),
+                statsStackView.widthAnchor.constraint(equalToConstant: 206),
+                statsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                
+                hourlyForecastLabel.topAnchor.constraint(equalTo: statsStackView.bottomAnchor, constant: 29),
+                hourlyForecastLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 35),
+                hourlyForecastLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35),
+                
+                hourlyCollectionView.topAnchor.constraint(equalTo: hourlyForecastLabel.bottomAnchor, constant: 22),
+                
+                hourlyCollectionView.heightAnchor.constraint(equalToConstant:84),
+                hourlyCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                hourlyCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            ])
+        }
 
 }
 
