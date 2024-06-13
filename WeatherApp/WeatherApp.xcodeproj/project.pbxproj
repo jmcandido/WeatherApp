@@ -16,6 +16,8 @@
 		425450462C074FFC00DFBA05 /* WeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425450452C074FFC00DFBA05 /* WeatherAppUITests.swift */; };
 		425450482C074FFC00DFBA05 /* WeatherAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425450472C074FFC00DFBA05 /* WeatherAppUITestsLaunchTests.swift */; };
 		42A9CC052C19BF8B0004FAA1 /* HourlyForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A9CC042C19BF8A0004FAA1 /* HourlyForecastCollectionViewCell.swift */; };
+		42A9CC072C1B272A0004FAA1 /* UIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A9CC062C1B272A0004FAA1 /* UIHelpers.swift */; };
+		42A9CC092C1B29B20004FAA1 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A9CC082C1B29B20004FAA1 /* Color+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		425450452C074FFC00DFBA05 /* WeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITests.swift; sourceTree = "<group>"; };
 		425450472C074FFC00DFBA05 /* WeatherAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		42A9CC042C19BF8A0004FAA1 /* HourlyForecastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastCollectionViewCell.swift; sourceTree = "<group>"; };
+		42A9CC062C1B272A0004FAA1 /* UIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelpers.swift; sourceTree = "<group>"; };
+		42A9CC082C1B29B20004FAA1 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +104,10 @@
 			isa = PBXGroup;
 			children = (
 				425450242C074FFA00DFBA05 /* AppDelegate.swift */,
+				42A9CC082C1B29B20004FAA1 /* Color+Extensions.swift */,
 				425450262C074FFA00DFBA05 /* SceneDelegate.swift */,
 				425450282C074FFA00DFBA05 /* ViewController.swift */,
+				42A9CC062C1B272A0004FAA1 /* UIHelpers.swift */,
 				42A9CC042C19BF8A0004FAA1 /* HourlyForecastCollectionViewCell.swift */,
 				4254502D2C074FFB00DFBA05 /* Assets.xcassets */,
 				4254502F2C074FFB00DFBA05 /* LaunchScreen.storyboard */,
@@ -258,9 +264,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				425450292C074FFA00DFBA05 /* ViewController.swift in Sources */,
+				42A9CC072C1B272A0004FAA1 /* UIHelpers.swift in Sources */,
 				425450252C074FFA00DFBA05 /* AppDelegate.swift in Sources */,
 				42A9CC052C19BF8B0004FAA1 /* HourlyForecastCollectionViewCell.swift in Sources */,
 				425450272C074FFA00DFBA05 /* SceneDelegate.swift in Sources */,
+				42A9CC092C1B29B20004FAA1 /* Color+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

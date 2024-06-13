@@ -7,29 +7,6 @@
 
 import UIKit
 
-let corPrimaria = "AppPrimaryColor"
-let corContraste = "constrastColor"
-let cinzaSuave = "softGray"
-
-func createLabel(tamanhoFonte: CGFloat, weight: UIFont.Weight = .regular, cor: String, texto: String, alinhamento: NSTextAlignment? = nil) -> UILabel{
-    
-    let label = UILabel()
-    label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = UIFont.systemFont(ofSize: tamanhoFonte, weight: weight)
-    label.text = texto
-    label.textColor = UIColor(named: cor) ?? .black
-    label.textAlignment = alinhamento ?? .left
-    
-    return label
-}
-
-func createStackView (arrangedSubviews:[UIView], eixo: NSLayoutConstraint.Axis) -> UIStackView{
-    let stackview = UIStackView(arrangedSubviews: arrangedSubviews)
-    stackview.translatesAutoresizingMaskIntoConstraints = false
-    stackview.axis = eixo
-    
-    return stackview
-}
 
 class ViewController: UIViewController {
    
@@ -56,7 +33,7 @@ class ViewController: UIViewController {
     private lazy var cityLabel: UILabel = {
         let label = createLabel(
                        tamanhoFonte: 20,
-                       cor: corPrimaria,
+                       cor: UIColor.corPrimaria,
                        texto: "Várzea Alegre",
                        alinhamento: .center)
         
@@ -64,31 +41,33 @@ class ViewController: UIViewController {
     }()
     
     private lazy var temperatureLabel: UILabel = {
-        let label = createLabel(tamanhoFonte: 70, weight: .bold, cor: corPrimaria, texto: "25ºC",           alinhamento: .left)
+        let label = createLabel(tamanhoFonte: 70, weight: .bold, cor: UIColor.corPrimaria, texto: "25ºC",           alinhamento: .left)
             return label
 
     }()
     
     
     private lazy var humidityLabel: UILabel = {
-        let label = createLabel(tamanhoFonte: 12, weight: .semibold, cor: corContraste, texto: "umidade")
+        let label = createLabel(tamanhoFonte: 12, weight: .semibold, cor: UIColor.corContraste, texto: "umidade")
         return label
     }()
     
     private lazy var humidityValueLabel: UILabel = {
-        let label = createLabel(tamanhoFonte: 12, weight: .semibold, cor: corContraste, texto: "1000mm")
+        let label = createLabel(tamanhoFonte: 12, weight: .semibold, cor: UIColor.corContraste, texto: "1000mm")
         return label
     }()
     
     private lazy var windLabel: UILabel = {
-        let label = createLabel(tamanhoFonte: 12, weight: .semibold,  cor: corContraste, texto: "vento")
+        let label = createLabel(tamanhoFonte: 12, weight: .semibold,  cor: UIColor.corContraste, texto: "vento")
         return label
     }()
     
     private lazy var windValueLabel: UILabel = {
-        let label = createLabel(tamanhoFonte: 12, weight: .semibold,cor: corContraste, texto: "10km/h")
+        let label = createLabel(tamanhoFonte: 12, weight: .semibold,cor: UIColor.corContraste, texto: "10km/h")
         return label
     }()
+    
+    
     
     private lazy var humidityStackView: UIStackView = {
         let stackView = createStackView(arrangedSubviews: [humidityLabel, humidityValueLabel], eixo: .horizontal)
@@ -105,7 +84,7 @@ class ViewController: UIViewController {
         let stackView = createStackView(arrangedSubviews: [humidityStackView, windStackView], eixo: .vertical)
         
         stackView.spacing = 3
-        stackView.backgroundColor = UIColor(named: cinzaSuave)
+        stackView.backgroundColor = UIColor.cinzaSuave
         stackView.layer.cornerRadius = 10
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 12,
@@ -117,10 +96,7 @@ class ViewController: UIViewController {
     
     
     private lazy var weatherIcon:UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "sunIcon")
-        imageView.contentMode = .scaleAspectFit
+        let imageView = createImageView(escala: .scaleAspectFit, icone: UIImage.sunIcon)
         
         return imageView
         
@@ -128,7 +104,7 @@ class ViewController: UIViewController {
     }()
     
     private lazy var hourlyForecastLabel: UILabel = {
-        let label = createLabel(tamanhoFonte: 12,weight: .semibold, cor: corContraste, texto: "PREVISÃO POR HORA", alinhamento: .center)
+        let label = createLabel(tamanhoFonte: 12,weight: .semibold, cor: UIColor.corContraste, texto: "PREVISÃO POR HORA", alinhamento: .center)
         return label
     }()
     
