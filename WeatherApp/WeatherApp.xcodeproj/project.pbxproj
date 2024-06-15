@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		420C05A72C1E326600735663 /* UTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420C05A62C1E326600735663 /* UTableViewCell.swift */; };
 		425450252C074FFA00DFBA05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425450242C074FFA00DFBA05 /* AppDelegate.swift */; };
 		425450272C074FFA00DFBA05 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425450262C074FFA00DFBA05 /* SceneDelegate.swift */; };
 		425450292C074FFA00DFBA05 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425450282C074FFA00DFBA05 /* ViewController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		420C05A62C1E326600735663 /* UTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTableViewCell.swift; sourceTree = "<group>"; };
 		425450212C074FFA00DFBA05 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		425450242C074FFA00DFBA05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		425450262C074FFA00DFBA05 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				42A9CC082C1B29B20004FAA1 /* Color+Extensions.swift */,
 				425450262C074FFA00DFBA05 /* SceneDelegate.swift */,
 				425450282C074FFA00DFBA05 /* ViewController.swift */,
+				420C05A62C1E326600735663 /* UTableViewCell.swift */,
 				42A9CC062C1B272A0004FAA1 /* UIHelpers.swift */,
 				42A9CC042C19BF8A0004FAA1 /* HourlyForecastCollectionViewCell.swift */,
 				4254502D2C074FFB00DFBA05 /* Assets.xcassets */,
@@ -267,6 +270,7 @@
 				42A9CC072C1B272A0004FAA1 /* UIHelpers.swift in Sources */,
 				425450252C074FFA00DFBA05 /* AppDelegate.swift in Sources */,
 				42A9CC052C19BF8B0004FAA1 /* HourlyForecastCollectionViewCell.swift in Sources */,
+				420C05A72C1E326600735663 /* UTableViewCell.swift in Sources */,
 				425450272C074FFA00DFBA05 /* SceneDelegate.swift in Sources */,
 				42A9CC092C1B29B20004FAA1 /* Color+Extensions.swift in Sources */,
 			);

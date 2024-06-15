@@ -108,6 +108,18 @@ class ViewController: UIViewController {
         return label
     }()
     
+    private lazy var dailyForecastLabel: UILabel = {
+        let label = createLabel(tamanhoFonte: 12, weight: .semibold, cor: UIColor.corContraste, texto: "PROXIMOS DIAS",alinhamento: .center)
+        return label
+    }()
+    
+    private lazy var dailyForecastTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .red
+        return tableView
+    }()
+    
     private lazy var hourlyCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         
@@ -142,6 +154,8 @@ class ViewController: UIViewController {
         view.addSubview(statsStackView)
         view.addSubview(hourlyForecastLabel)
         view.addSubview(hourlyCollectionView)
+        view.addSubview(dailyForecastLabel)
+        view.addSubview(dailyForecastTableView)
         
         headerView.addSubview(cityLabel)
         headerView.addSubview(temperatureLabel)
@@ -187,7 +201,19 @@ class ViewController: UIViewController {
                 
                 hourlyCollectionView.heightAnchor.constraint(equalToConstant:84),
                 hourlyCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                hourlyCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+                hourlyCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                
+                dailyForecastLabel.topAnchor.constraint(equalTo: hourlyCollectionView.bottomAnchor, constant: 29),
+                dailyForecastLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 35),
+                dailyForecastLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -35),
+                
+                dailyForecastTableView.topAnchor.constraint(equalTo: dailyForecastLabel.bottomAnchor, constant: 30),
+                dailyForecastTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+                dailyForecastTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                dailyForecastTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+                
+                
+                
             ])
         }
 
