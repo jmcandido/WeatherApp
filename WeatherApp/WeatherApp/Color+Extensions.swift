@@ -18,6 +18,6 @@ extension UIColor {
 
 extension UIImage{
     static let iconeSol = UIImage(named: "sunIcon")
-    static let inconNuvem = UIImage(named: "cloudIcon")
+    static let iconeNuvem = UIImage(named: "cloudIcon")
     
 }

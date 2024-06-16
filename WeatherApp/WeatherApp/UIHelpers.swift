@@ -17,6 +17,7 @@ func createStackView (arrangedSubviews:[UIView], eixo: NSLayoutConstraint.Axis) 
     let stackview = UIStackView(arrangedSubviews: arrangedSubviews)
     stackview.translatesAutoresizingMaskIntoConstraints = false
     stackview.axis = eixo
+    stackview.isLayoutMarginsRelativeArrangement = true
     
     return stackview
 }
@@ -24,10 +25,10 @@ func createStackView (arrangedSubviews:[UIView], eixo: NSLayoutConstraint.Axis) 
 func createImageView(escala: UIView.ContentMode, icone: UIImage?) -> UIImageView{
     let imageView = UIImageView()
     imageView.translatesAutoresizingMaskIntoConstraints = false
-    imageView.image = UIImage.sunIcon
+    imageView.image = icone
     imageView.contentMode = escala
     return imageView
 }
-
+ 
 
 

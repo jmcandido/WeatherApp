@@ -34,7 +34,6 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
         stackview.layer.borderColor = UIColor.corContraste?.cgColor
         stackview.layer.cornerRadius = 20
         
-        stackview.isLayoutMarginsRelativeArrangement = true
         stackview.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 8,
                                                                      leading: 8,
                                                                      bottom: 8,

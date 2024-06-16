@@ -9,6 +9,16 @@ import UIKit
 
 class DailyForecastTableViewCell: UITableViewCell {
     
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+         setupView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     static let identifier: String = "DailyForecast"
     
     private lazy var weekDayLabel : UILabel = {
@@ -17,7 +27,7 @@ class DailyForecastTableViewCell: UITableViewCell {
     }()
     
     private lazy var climateLabel : UIImageView = {
-        let imageView = createImageView(escala: .scaleAspectFit, icone: UIImage.inconNuvem)
+        let imageView = createImageView(escala: .scaleAspectFit, icone: UIImage.iconeNuvem)
         return imageView
     }()
     
@@ -30,21 +40,39 @@ class DailyForecastTableViewCell: UITableViewCell {
         let label = createLabel(tamanhoFonte: 12, weight: .semibold, cor: UIColor.corContraste ,texto: "max 25ºC")
         return label
     }()
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .red
+    
+    private lazy var stackView: UIStackView = {
+        let stackView = createStackView(arrangedSubviews: [weekDayLabel,climateLabel,  minTemperatureLabel, maxTemperature], eixo: .horizontal)
+        
+        stackView.spacing = 15
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
+        
+        return stackView
+    }()
+    
+    
+    private func setupView(){
+        backgroundColor = .clear
+        selectionStyle = .none
+        setHierachy()
+        setConstraints()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    private func setHierachy(){
+        contentView.addSubview(stackView)
+        
     }
     
-    
-    private func setupView(){}
-    
-    private func setHierachy(){}
-    
-    private func setConstraints (){}
+    private func setConstraints (){
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            
+            weekDayLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 50)
+        ])
+    }
     
     
 
