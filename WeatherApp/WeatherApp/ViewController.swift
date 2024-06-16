@@ -8,7 +8,8 @@
 import UIKit
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController{
+    
    
     private  lazy var backgroundView: UIImageView = {
         let imageView = UIImageView()
@@ -116,7 +117,10 @@ class ViewController: UIViewController {
     private lazy var dailyForecastTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .red
+        tableView.backgroundColor = .gray
+        tableView.dataSource = self
+        tableView.register(DailyForecastTableViewCell.self, forCellReuseIdentifier: DailyForecastTableViewCell.identifier)
+        
         return tableView
     }()
     
@@ -229,6 +233,20 @@ extension ViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HourlyForecastCollectionViewCell.indentifier, for: indexPath)
+        return cell
+        
+    }
+}
+
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier:DailyForecastTableViewCell.identifier, for: indexPath)
+        
         return cell
         
     }
