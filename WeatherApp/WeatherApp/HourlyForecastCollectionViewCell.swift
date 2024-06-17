@@ -12,12 +12,12 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
     static let indentifier: String = "HourlyForecast"
     
     private lazy var hourLabel: UILabel = {
-        let label = createLabel(tamanhoFonte: 10, weight: .semibold, cor: UIColor.corContraste, texto: "13:00", alinhamento: .center)
+        let label = UILabel.createLabel(tamanhoFonte: 10, weight: .semibold, cor: UIColor.corContraste, texto: "13:00", alinhamento: .center)
         return label
     }()
     
     private lazy var temperatureLabel: UILabel = {
-        let label = createLabel(tamanhoFonte: 14, cor: UIColor.corContraste, texto: "25ºC", alinhamento: .center)
+        let label = UILabel.createLabel(tamanhoFonte: 14, cor: UIColor.corContraste, texto: "25ºC", alinhamento: .center)
         return label
     }()
     
@@ -64,16 +64,12 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
     
     private func setConstraints(){
         
+        stackView.setConstraintsToParent(contentView)
+        
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            
             iconImageView.heightAnchor.constraint(equalToConstant: 33)
-        
         ])
-        
     }
+    
     
 }

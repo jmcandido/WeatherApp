@@ -22,7 +22,7 @@ class DailyForecastTableViewCell: UITableViewCell {
     static let identifier: String = "DailyForecast"
     
     private lazy var weekDayLabel : UILabel = {
-        let label = createLabel(tamanhoFonte: 12, weight: .semibold, cor: UIColor.corContraste ,texto: "TER")
+        let label = UILabel.createLabel(tamanhoFonte: 12, weight: .semibold, cor: UIColor.corContraste ,texto: "TER")
         return label
     }()
     
@@ -32,12 +32,12 @@ class DailyForecastTableViewCell: UITableViewCell {
     }()
     
     private lazy var minTemperatureLabel: UILabel = {
-        let label = createLabel(tamanhoFonte: 12, weight: .semibold, cor: UIColor.corContraste ,texto: "min 25ºC")
+        let label = UILabel.createLabel(tamanhoFonte: 12, weight: .semibold, cor: UIColor.corContraste ,texto: "min 25ºC")
         return label
     }()
     
     private lazy var maxTemperature: UILabel = {
-        let label = createLabel(tamanhoFonte: 12, weight: .semibold, cor: UIColor.corContraste ,texto: "max 25ºC")
+        let label = UILabel.createLabel(tamanhoFonte: 12, weight: .semibold, cor: UIColor.corContraste ,texto: "max 25ºC")
         return label
     }()
     
@@ -64,12 +64,8 @@ class DailyForecastTableViewCell: UITableViewCell {
     }
     
     private func setConstraints (){
+        stackView.setConstraintsToParent(contentView)
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            
             weekDayLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 50)
         ])
     }

@@ -32,7 +32,7 @@ class ViewController: UIViewController{
     
     
     private lazy var cityLabel: UILabel = {
-        let label = createLabel(
+        let label = UILabel.createLabel(
                        tamanhoFonte: 20,
                        cor: UIColor.corPrimaria,
                        texto: "Várzea Alegre",
@@ -42,47 +42,48 @@ class ViewController: UIViewController{
     }()
     
     private lazy var temperatureLabel: UILabel = {
-        let label = createLabel(tamanhoFonte: 70, weight: .bold, cor: UIColor.corPrimaria, texto: "25ºC",           alinhamento: .left)
+        let label = UILabel.createLabel(tamanhoFonte: 70, weight: .bold, cor: UIColor.corPrimaria, texto: "25ºC",           alinhamento: .left)
             return label
 
     }()
     
     
     private lazy var humidityLabel: UILabel = {
-        let label = createLabel(tamanhoFonte: 12, weight: .semibold, cor: UIColor.corContraste, texto: "umidade")
+        let label = UILabel.createLabel(tamanhoFonte: 12, weight: .semibold, cor: UIColor.corContraste, texto: "umidade")
         return label
     }()
     
     private lazy var humidityValueLabel: UILabel = {
-        let label = createLabel(tamanhoFonte: 12, weight: .semibold, cor: UIColor.corContraste, texto: "1000mm")
+        let label = UILabel.createLabel(tamanhoFonte: 12, weight: .semibold, cor: UIColor.corContraste, texto: "1000mm")
         return label
     }()
     
     private lazy var windLabel: UILabel = {
-        let label = createLabel(tamanhoFonte: 12, weight: .semibold,  cor: UIColor.corContraste, texto: "vento")
+        let label = UILabel.createLabel(tamanhoFonte: 12, weight: .semibold,  cor: UIColor.corContraste, texto: "vento")
         return label
     }()
     
     private lazy var windValueLabel: UILabel = {
-        let label = createLabel(tamanhoFonte: 12, weight: .semibold,cor: UIColor.corContraste, texto: "10km/h")
+        let label = UILabel.createLabel(tamanhoFonte: 12, weight: .semibold,cor: UIColor.corContraste, texto: "10km/h")
         return label
     }()
     
     
     
     private lazy var humidityStackView: UIStackView = {
-        let stackView = createStackView(arrangedSubviews: [humidityLabel, humidityValueLabel], eixo: .horizontal)
+        let stackView = self.view.createStackView(arrangedSubviews: [humidityLabel, humidityValueLabel], eixo: .horizontal)
         return stackView
     }()
     
     private lazy var windStackView: UIStackView = {
-        let stackView = createStackView(arrangedSubviews: [windLabel, windValueLabel], eixo: .horizontal)
+        let stackView = self.view.createStackView(arrangedSubviews: [windLabel, windValueLabel], eixo: .horizontal)
         return stackView
     }()
     
     
     private lazy var statsStackView: UIStackView = {
-        let stackView = createStackView(arrangedSubviews: [humidityStackView, windStackView], eixo: .vertical)
+        let stackView = self.view.createStackView(arrangedSubviews: [humidityStackView, windStackView], eixo: .vertical)
+        
         
         stackView.spacing = 3
         stackView.backgroundColor = UIColor.cinzaSuave
@@ -97,7 +98,7 @@ class ViewController: UIViewController{
     
     
     private lazy var weatherIcon:UIImageView = {
-        let imageView = createImageView(escala: .scaleAspectFit, icone: UIImage.sunIcon)
+        let imageView = self.view.createImageView(escala: .scaleAspectFit, icone: UIImage.sunIcon)
         
         return imageView
         
@@ -105,12 +106,13 @@ class ViewController: UIViewController{
     }()
     
     private lazy var hourlyForecastLabel: UILabel = {
-        let label = createLabel(tamanhoFonte: 12,weight: .semibold, cor: UIColor.corContraste, texto: "PREVISÃO POR HORA", alinhamento: .center)
+        
+        let label = UILabel.createLabel(tamanhoFonte: 12,weight: .semibold, cor: UIColor.corContraste, texto: "PREVISÃO POR HORA", alinhamento: .center)
         return label
     }()
     
     private lazy var dailyForecastLabel: UILabel = {
-        let label = createLabel(tamanhoFonte: 12, weight: .semibold, cor: UIColor.corContraste, texto: "PROXIMOS DIAS",alinhamento: .center)
+        let label = UILabel.createLabel(tamanhoFonte: 12, weight: .semibold, cor: UIColor.corContraste, texto: "PROXIMOS DIAS",alinhamento: .center)
         return label
     }()
     
