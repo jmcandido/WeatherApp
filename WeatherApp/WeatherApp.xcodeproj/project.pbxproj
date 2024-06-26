@@ -83,18 +83,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		42251BB42C2CB08C00378CCA /* iimages */ = {
-			isa = PBXGroup;
-			children = (
-				42251BB52C2CB0A500378CCA /* Captura de Tela 2024-06-26 às 17.15.55.png */,
-			);
-			path = iimages;
-			sourceTree = "<group>";
-		};
 		425450182C074FFA00DFBA05 = {
 			isa = PBXGroup;
 			children = (
-				42251BB42C2CB08C00378CCA /* iimages */,
 				425450232C074FFA00DFBA05 /* WeatherApp */,
 				4254503A2C074FFC00DFBA05 /* WeatherAppTests */,
 				425450442C074FFC00DFBA05 /* WeatherAppUITests */,
@@ -123,6 +114,7 @@
 				420C05A62C1E326600735663 /* DailyForecastTableViewCell.swift */,
 				42A9CC042C19BF8A0004FAA1 /* HourlyForecastCollectionViewCell.swift */,
 				4254502D2C074FFB00DFBA05 /* Assets.xcassets */,
+				42251BB52C2CB0A500378CCA /* Captura de Tela 2024-06-26 às 17.15.55.png */,
 				4254502F2C074FFB00DFBA05 /* LaunchScreen.storyboard */,
 				425450322C074FFB00DFBA05 /* Info.plist */,
 			);
