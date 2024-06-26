@@ -74,7 +74,6 @@ class DailyForecastTableViewCell: UITableViewCell {
         stackView.setConstraintsToParent(contentView)
         NSLayoutConstraint.activate([
             weekDayLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 50),
-            climateLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
     

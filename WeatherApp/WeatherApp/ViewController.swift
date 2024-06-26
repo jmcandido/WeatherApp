@@ -117,6 +117,7 @@ class ViewController: UIViewController{
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .clear
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(DailyForecastTableViewCell.self, forCellReuseIdentifier: DailyForecastTableViewCell.identifier)
         
         return tableView
@@ -169,6 +170,13 @@ class ViewController: UIViewController{
 
         hourlyCollectionView.reloadData()
         dailyForecastTableView.reloadData()
+        
+        if forecastResponse?.current.dt.isDayTime() ?? true {
+            
+            backgroundView.image = UIImage(named: "backgroundDay")
+        }else{
+            backgroundView.image = UIImage(named: "backgroundNight")
+        }
     }
     
     private func setupView(){
@@ -263,13 +271,13 @@ extension ViewController: UICollectionViewDataSource {
         
         let forecast = forecastResponse?.hourly[indexPath.row]
         cell.loadData(time: forecast?.dt.toHourFormat(),
-                      icon: UIImage.iconeSol,
+                      icon: UIImage(named: forecast?.weather.first?.icon ?? ""),
                       temp: forecast?.temp.toCelsius())
         return cell
     }
 }
 
-extension ViewController: UITableViewDataSource {
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         forecastResponse?.daily.count ?? 0
     }
@@ -282,9 +290,13 @@ extension ViewController: UITableViewDataSource {
         }
         
         let forecast = forecastResponse?.daily[indexPath.row]
-        cell.loadData(weekDay: forecast?.dt.toWeekdayName().uppercased(), min: forecast?.temp.min.toCelsius(), max:forecast?.temp.max.toCelsius(), icon: UIImage.iconeSol)
+        cell.loadData(weekDay: forecast?.dt.toWeekdayName().uppercased(), min: forecast?.temp.min.toCelsius(), max:forecast?.temp.max.toCelsius(), icon: UIImage(named: forecast?.weather.first?.icon ?? ""))
         
         return cell
         
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        60
     }
 }
