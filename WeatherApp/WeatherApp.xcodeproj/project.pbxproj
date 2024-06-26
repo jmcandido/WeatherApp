@@ -16,6 +16,7 @@
 		4254503C2C074FFC00DFBA05 /* WeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4254503B2C074FFC00DFBA05 /* WeatherAppTests.swift */; };
 		425450462C074FFC00DFBA05 /* WeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425450452C074FFC00DFBA05 /* WeatherAppUITests.swift */; };
 		425450482C074FFC00DFBA05 /* WeatherAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425450472C074FFC00DFBA05 /* WeatherAppUITestsLaunchTests.swift */; };
+		429FF4842C2986F60062DB41 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FF4832C2986F60062DB41 /* Service.swift */; };
 		42A9CC052C19BF8B0004FAA1 /* HourlyForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A9CC042C19BF8A0004FAA1 /* HourlyForecastCollectionViewCell.swift */; };
 		42A9CC092C1B29B20004FAA1 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A9CC082C1B29B20004FAA1 /* Color+Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -51,6 +52,7 @@
 		425450412C074FFC00DFBA05 /* WeatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		425450452C074FFC00DFBA05 /* WeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITests.swift; sourceTree = "<group>"; };
 		425450472C074FFC00DFBA05 /* WeatherAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		429FF4832C2986F60062DB41 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		42A9CC042C19BF8A0004FAA1 /* HourlyForecastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastCollectionViewCell.swift; sourceTree = "<group>"; };
 		42A9CC082C1B29B20004FAA1 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,6 +108,7 @@
 				425450242C074FFA00DFBA05 /* AppDelegate.swift */,
 				42A9CC082C1B29B20004FAA1 /* Color+Extensions.swift */,
 				425450262C074FFA00DFBA05 /* SceneDelegate.swift */,
+				429FF4832C2986F60062DB41 /* Service.swift */,
 				425450282C074FFA00DFBA05 /* ViewController.swift */,
 				420C05A62C1E326600735663 /* DailyForecastTableViewCell.swift */,
 				42A9CC042C19BF8A0004FAA1 /* HourlyForecastCollectionViewCell.swift */,
@@ -264,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				425450292C074FFA00DFBA05 /* ViewController.swift in Sources */,
+				429FF4842C2986F60062DB41 /* Service.swift in Sources */,
 				425450252C074FFA00DFBA05 /* AppDelegate.swift in Sources */,
 				42A9CC052C19BF8B0004FAA1 /* HourlyForecastCollectionViewCell.swift in Sources */,
 				420C05A72C1E326600735663 /* DailyForecastTableViewCell.swift in Sources */,

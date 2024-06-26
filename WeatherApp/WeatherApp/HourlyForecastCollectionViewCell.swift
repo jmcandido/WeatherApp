@@ -12,12 +12,12 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
     static let indentifier: String = "HourlyForecast"
     
     private lazy var hourLabel: UILabel = {
-        let label = UILabel.createLabel(tamanhoFonte: 10, weight: .semibold, cor: UIColor.corContraste, texto: "13:00", alinhamento: .center)
+        let label = UILabel.createLabel(tamanhoFonte: 10, weight: .semibold, cor: UIColor.corContraste, alinhamento: .center)
         return label
     }()
     
     private lazy var temperatureLabel: UILabel = {
-        let label = UILabel.createLabel(tamanhoFonte: 14, cor: UIColor.corContraste, texto: "25ºC", alinhamento: .center)
+        let label = UILabel.createLabel(tamanhoFonte: 14, cor: UIColor.corContraste, alinhamento: .center)
         return label
     }()
     
@@ -60,6 +60,12 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
     
     private func setHierarchy (){
         contentView.addSubview(stackView)
+    }
+    
+    func loadData(time: String?, icon: UIImage?, temp: String?){
+        hourLabel.text = time
+        iconImageView.image = icon
+        temperatureLabel.text = temp
     }
     
     private func setConstraints(){

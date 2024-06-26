@@ -22,7 +22,7 @@ class DailyForecastTableViewCell: UITableViewCell {
     static let identifier: String = "DailyForecast"
     
     private lazy var weekDayLabel : UILabel = {
-        let label = UILabel.createLabel(tamanhoFonte: 12, weight: .semibold, cor: UIColor.corContraste ,texto: "TER")
+        let label = UILabel.createLabel(tamanhoFonte: 12, weight: .semibold, cor: UIColor.corContraste)
         return label
     }()
     
@@ -32,17 +32,17 @@ class DailyForecastTableViewCell: UITableViewCell {
     }()
     
     private lazy var minTemperatureLabel: UILabel = {
-        let label = UILabel.createLabel(tamanhoFonte: 12, weight: .semibold, cor: UIColor.corContraste ,texto: "min 25ºC")
+        let label = UILabel.createLabel(tamanhoFonte: 12, weight: .semibold, cor: UIColor.corContraste)
         return label
     }()
     
-    private lazy var maxTemperature: UILabel = {
-        let label = UILabel.createLabel(tamanhoFonte: 12, weight: .semibold, cor: UIColor.corContraste ,texto: "max 25ºC")
+    private lazy var maxTemperatureLabel: UILabel = {
+        let label = UILabel.createLabel(tamanhoFonte: 12, weight: .semibold, cor: UIColor.corContraste)
         return label
     }()
     
     private lazy var stackView: UIStackView = {
-        let stackView = createStackView(arrangedSubviews: [weekDayLabel,climateLabel,  minTemperatureLabel, maxTemperature], eixo: .horizontal)
+        let stackView = createStackView(arrangedSubviews: [weekDayLabel,climateLabel,  minTemperatureLabel, maxTemperatureLabel], eixo: .horizontal)
         
         stackView.spacing = 15
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
@@ -63,10 +63,18 @@ class DailyForecastTableViewCell: UITableViewCell {
         
     }
     
+    func loadData(weekDay:String?, min:String?, max:String?, icon: UIImage?){
+        weekDayLabel.text = weekDay
+        minTemperatureLabel.text = "min \(min ?? "")"
+        maxTemperatureLabel.text = "max \(max ?? "")"
+        climateLabel.image = icon
+    }
+    
     private func setConstraints (){
         stackView.setConstraintsToParent(contentView)
         NSLayoutConstraint.activate([
-            weekDayLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 50)
+            weekDayLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 50),
+            climateLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
     
