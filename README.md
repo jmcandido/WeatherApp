@@ -22,3 +22,4 @@ Este projeto foi criado por um desenvolvedor iniciante em Swift, inspirado pelo 
 - **One Call API 3.0**: API utilizada para obter dados meteorológicos em tempo real.
 
 
+[Captura de Tela do WeatherApp](https://github.com/jmcandido/WeatherApp/blob/main/WeatherApp/iimages/Captura%20de%20Tela%202024-06-26%20%C3%A0s%2017.15.55.png?raw=true)
