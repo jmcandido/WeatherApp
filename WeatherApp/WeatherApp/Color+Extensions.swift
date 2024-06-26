@@ -66,16 +66,6 @@ extension UILabel{
 }
 
 
-
-//
-//  Core+Extensions.swift
-//  Weather App
-//
-//  Created by Karolina Attekita on 04/08/23.
-//
-
-import Foundation
-
 extension Int {
     func toWeekdayName() -> String {
         let date = Date(timeIntervalSince1970: TimeInterval(self))
