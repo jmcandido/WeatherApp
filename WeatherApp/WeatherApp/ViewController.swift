@@ -94,7 +94,8 @@ class ViewController: UIViewController{
     
     
     private lazy var weatherIcon:UIImageView = {
-        let imageView = self.view.createImageView(escala: .scaleAspectFit, icone: UIImage.sunIcon)
+        let imageView = self.view.createImageView(escala: .scaleAspectFit, icone: UIImage(named: forecastResponse?.current.weather.first?.icon ?? "")
+                                                  )
         
         return imageView
         
@@ -177,6 +178,8 @@ class ViewController: UIViewController{
         }else{
             backgroundView.image = UIImage(named: "backgroundNight")
         }
+        
+        weatherIcon.image = UIImage(named: forecastResponse?.current.weather.first?.icon ?? "")
     }
     
     private func setupView(){
